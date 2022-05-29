@@ -1,0 +1,42 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/cartStyle.css'}" >
+
+    <section class="u-align-left u-clearfix u-image u-shading u-section-5" style="background-image: url('https://emerging-europe.com/wp-content/uploads/2018/11/bigstock-abstract-technology-background-250119211.jpg');" data-image-width="2000" data-image-height="1333" id="sec-d39c">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <div class="u-expanded-width u-products u-products-1">
+                <div class="u-repeater u-repeater-1">
+                    <div class="u-align-center u-container-style u-products-item u-repeater-item u-white u-repeater-item-1" th:each="cL:${courseList}">
+                        <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1"  style="background-color: rgba(169,169,169,0.35)">
+                            <h4 class="u-align-center u-product-control u-text u-text-1">
+                                <a class="u-product-title-link" href="#" th:text="${cL.name}">
+                                </a>
+                            </h4>
+                            <div alt="" class="u-expanded-width-lg u-image u-image-circle u-product-control u-image-1" th:style="'background-image:url(' + ${cL.logo} + ');'">
+                            </div>
+                            <div class="u-product-control u-product-price u-product-price-1">
+                                <div class="u-price-wrapper u-spacing-10">
+                                    <div class="u-price u-text-palette-2-base" style="font-size: 1.25rem; font-weight: 700;" th:text="${cL.price}+' KZT'">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="u-product-control u-product-desc u-text u-text-2"  style="height: 50px" th:text="${cL.description}">
+                            </div>
+                            <div class="u-product-control u-product-desc u-text u-text-2" >
+                                <a   th:href="@{'/course/'+ ${cL.getId()}}" class="btn" style="background-color: rgba(26,26,26,0.93);color: white">
+                                    Толығырақ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+</html>

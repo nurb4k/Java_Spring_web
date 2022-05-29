@@ -1,0 +1,36 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+
+    <div class="container">
+        <div class="row">
+
+            <br>
+            <h1>LESSONS</h1>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" th:each="ls:${lessonList}" th:if="${ls.course.id == course_id }" >
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+
+                        <iframe class="d-block w-100" width="820" height="615"
+                                th:src="${ls.video}" >
+                        </iframe>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="card-title" th:text="${ls.name}"  ></h5>
+                            <p class="card-text"th:text="${ls.topic}" ></p>
+                        </div>
+                    </div>
+
+                </div>
+                <br><br>
+                <h1>NEXT LESSON</h1>
+                <br>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+</html>

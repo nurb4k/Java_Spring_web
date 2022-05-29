@@ -1,0 +1,39 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+
+    <div class="col-6 mx-auto">
+        <form th:action="@{'/signin'}" method="post">
+            <div class="row mt-3">
+                <div class="col-12">
+                    <label class="col-form-label">EMAIL: </label>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-12">
+                    <input type="email" class="form-control" placeholder="Insert email" name="user_email" required>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <label class="col-form-label">PASSWORD: </label>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-12">
+                    <input type="password" class="form-control" placeholder="password" name="user_password" required>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-12">
+                    <button class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+
+</html>

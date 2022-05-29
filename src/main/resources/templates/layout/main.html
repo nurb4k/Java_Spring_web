@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 16px;"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/nicepage.css'}" media="screen">
+    <link rel="stylesheet" type="text/css" th:href="@{'/css/bootstrap.css'}" >
+
+    <link rel="stylesheet" type="text/css"  th:href="@{'/css/Home.css'}"media="screen">
+
+
+
+</head>
+<body style="margin: 0 auto;height: 100%">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0,0,0,0.69) ">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{'/'}"><b>Courses</b></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{'/'}">Home</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link" th:href="@{'/login'}">Login</a>
+                </li>
+
+                <li class="nav-item"   sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                    <a class="nav-link" th:href="@{'/myCourse'}">My courses(A)</a>
+                </li>
+
+                <li class="nav-item"   sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{'/myCourse'}">My courses</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link" th:href="@{'/register'}">Register</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                    <a class="nav-link" th:href="@{'/adminpanel'}">admin panel</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="hasAnyRole('ROLE_MODER')">
+                    <a class="nav-link" th:href="@{'/moderatorpanel'}">moder panel</a>
+                </li>
+                <li class="nav-item u-align-right" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{'/cart'}">Cart</a>
+                </li>
+
+                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <!--                        <span th:text="${currentUser.fullname}"></span>-->
+                        <span>PROFILE</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{'/profile'}">PROFILE</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="JavaScript:void(0)"
+                               onclick="document.getElementById('logoutForm').submit();">
+                            Logout</a>
+                        </li>
+                    </ul>
+                    <form th:action="@{'/signout'}" method="post" id="logoutForm">
+
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div layout:fragment="mainContent" style="min-height: 100%;display: flex; flex-direction: column" >
+    <div class="container" style="flex:1 1 auto">
+
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<footer class="u-backlink u-clearfix u-grey-80" style="" >
+    <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
+        <span>Copyright 2022 (C)</span>
+    </a>
+    <p class="u-text">
+        <span>Site owner N.Akmoldayev</span>
+    </p>
+    <a class="u-link" href="https://nicepage.online" target="_blank">
+        <span>, email: nurb8k@gmail.com</span>
+    </a>.
+</footer>
+</body>
+</html>

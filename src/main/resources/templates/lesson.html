@@ -1,0 +1,28 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+
+<div layout:fragment="mainContent">
+    <div style="margin-left: 60px;margin-right: 60px">
+        <div class="row" >
+            <div class="col-12">
+                <div class="row">
+                    <div class="card" th:each="cL:${courseList}" style="width: 25rem;">
+                        <a th:href="@{'/lesson/'+ ${cL.getId()}}" > <img th:src="${cL.logo}" class="card-img-top" alt="course"></a>
+                        <div class="card-body">
+                            <h3 class="card-title" th:text="${cL.name}"></h3>
+                            <h6 class="card-text" th:text="${cL.description}" > </h6>
+                            <h3 th:text="${cL.price}+' ₸'"> </h3>
+                            <a href="#" class="btn" style="background-color: rgba(104,255,71,0.55)">BUY</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</html>

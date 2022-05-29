@@ -1,0 +1,83 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+    <div class="container" style="margin-top: 50px">
+        <div class="row" >
+            <button type="button" class="btn" style="background-color: rgba(30,30,227,0.71);color: white ; width: 15% ;margin-top: 20px " data-bs-toggle="modal" data-bs-target="#exampleModal"> ADD NEW COURSE </button>
+            <br>
+            <form th:action="@{'/addCourse'}" method="post">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">New course</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <br><br><br>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">NAME COURSE: </label>
+                                    <input type="text" class="form-control" id="recipient-name" required placeholder="Insert Name" name="name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label" > INSERT LOGO LINK</label>
+                                    <input type="text" class="form-control" id="recipient-imageLink" required placeholder="Insert image link" name="imageLink">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label" > INSERT PRICE</label>
+
+                                    <input type="number" class="form-control" id="recipient-price" required placeholder="Insert price" name="price">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label" > insert description</label>
+                                    <input type="text" class="form-control"  required placeholder="Insert description" name="description">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label" > insert info course</label>
+                                    <input type="text" class="form-control"  required placeholder="Insert info about course" name="info">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">EXIT</button>
+                                <input type="submit" class="btn btn-primary" value="ADD">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <table class="table caption-top">
+                <thead style="background-color: rgba(52,56,56,0.82)">
+                <tr>
+                    <th style="color: white">NAME</th>
+                    <th style="color: white">PRICE</th>
+                    <th style="color: white">LOGO</th>
+                    <th style="color: white">DESCRIPTION</th>
+
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody  style="background-color: rgba(241,151,151,0)">
+                <tr th:each="cr : ${courseList}">
+                    <td th:text="${cr.name}"></td>
+                    <td th:text="${cr.price}"></td>
+                    <td th:text="${cr.logo}"></td>
+                    <td th:text="${cr.description}"></td>
+
+                    <td><a class="btn btn-primary" th:href="@{'/edit/'+ ${cr.id}}" >EDIT</a></td>
+                   <td> <form th:action="@{'/deleteCourse'}" method="post" th:if="${cr!=null}">
+                        <input type="hidden" name="id" th:value="${cr.id}">
+                        <button class="btn btn-danger" type="submit">DELETE</button>
+                    </form></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</html>
